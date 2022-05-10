@@ -1,17 +1,31 @@
 package com.sparta.mc.vehicles;
 
-import java.math.BigDecimal;
+import com.sparta.mc.vehicles.interfaces.Convertible;
+import com.sparta.mc.vehicles.interfaces.Spoiler;
 
-public class Car extends Vehicle {
-  //  model, make, engine size, colour, style,
-//  road tax status,  fuel level, mot checked, etc.
-//  Put in the instance variables, and add some methods
+public class Car extends Vehicle implements Convertible {
   private String carModel;
   private String carMake;
 
-  public Car( String carModel, String carMake, boolean roadTaxStatus, boolean motCheck, int engineSize, BigDecimal fuelLevel ) {
+  public Car( String carModel, String carMake, boolean roadTaxStatus, boolean motCheck, double engineSize, double fuelLevel ) {
     super( roadTaxStatus, motCheck, engineSize, fuelLevel );
     this.carModel = carModel;
     this.carMake = carMake;
   }
+
+
+  public String listCarDetails() {
+    return "This car is a " + Colour.RED + " " + carMake + " " + carModel + ". " +
+            "It does have road tax, it has not had its MOT checked. " +
+            "The engine can hold " + getEngineSize() + " L of fuel. It currently has "
+            + getFuelLevel() + " L of fuel left.";
+  }
+
+  public String listCar2Details() {
+    return "This car is a " + Colour.BLACK + " " + carMake + " " + carModel + ". " +
+            "Its road tax status is " + isRoadTaxStatus() + ", its MOT check is " + isMotCheck()+
+            ". The engine can hold " + getEngineSize() + " L of fuel. It currently has "
+            + getFuelLevel() + " L of fuel left.";
+  }
+
 }
